@@ -1,0 +1,161 @@
+<form name="d2dForm" novalidate><!-- commented `name="d2dForm"`, controller in $scope form valid handles, coming thinks; checking available of `d2dForm`, controller in `vm` form valid handles, try --><!-- commented `name="d2dForm"`, try of without `$ctrl`, `$ctrl` as to have for `vm` -->
+	<div class="row">
+		<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 col-lg-offset-1 vgPaddingBottom10">
+			<div class="infoHeading txtClrWhite" [innerHTML]>{{'DOOR.INFO_HEAD' | translate}}</div>
+			<BR>
+			<span class="infoSubHeading txtClrWhite" translate="DOOR.INFO_SUB_HEAD"></span>
+			<BR>
+			<div class="">
+				<ul class="infoList txtClrWhite">
+					<li class="tick" translate="DOOR.INFO_LIST1"></li>
+					<li class="tick" ><span translate="DOOR.INFO_LIST2"></span></li>
+					<li class="tick" translate="DOOR.INFO_LIST3"></li>
+					<li class="tick" translate="DOOR.INFO_LIST4"></li>
+					<li class="tick" translate="DOOR.INFO_LIST5"></li>
+					<li class="tick" translate="DOOR.INFO_LIST6"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 quoteSearchFormPanel">
+			<BR><BR>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vg-lg-padding-left-right-25 vg-md-padding-left-right-25" ng-show="slide1">
+				<div class="row" ng-if="quoteSearchResults.length > 0">
+					<!-- Note: below attributes `code`, `desc` given values, not available in data `quoteSearchResults`, thinks; as format showing value tries, as `track by` available not selects data, thinks  -->
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<!-- <vg-select name="d2dRecentSearchDetails" cmp-id="d2dRecentSearchDetails" label="{{'DOOR.RECENT_SEARCHES' | translate}}" placeholder="{{'DOOR.RECENT_SEARCHES' | translate}}" 
+							model="selectedQuoteSearchDetails" hide-label-text="true" showicon="false" 
+							data="quoteSearchResults" code="formatQuote" desc="formatQuote" default-select-first="false" 
+							update-parent-model="updateModel($event, $ctrl, 'selectedQuoteSearchDetails')" 
+							change-event="selectQuoteSearch()" show-label="horizontal" disable-field="loadingCountries">
+						</vg-select> -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span class="formTitle" translate="DOOR.DOOR_PICKUP"></span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" align="right" >
+						<vg-switch [model]="pickupSwitchStatus" (result)="checkPickupStatus($event)">
+						</vg-switch>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<vg-select name="d2dPickupCountry" id="d2dPickupCountry" label="{{'DOOR.PICKUP_COUNTRY' | translate}}" 
+             				[model]="selectedPickupCountry" (onModelChange)="updateModelChange($event,'selectedPickupCountry')" [data]="pickupCountryList" placeholder="{{'DOOR.SELECT_PICKUP_COUNTRY' | translate}}" [showlabel]=false>
+						</vg-select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span *ngIf="!pickupSwitchStatus">
+							 <vg-select name="d2dPickupPortcode" cmp-id="d2dPickupPortcode" label="{{'DOOR.PICKUP_PORT_LABEL' | translate}}" placeholder="{{'DOOR.PICKUP_PORT' | translate}}" 
+								[model]="d2dPickupPort" (onModelChange)="updateModelChange($event,'d2dPickupPort')" [data]="pickupPortList" [disabled]="isPickupCountrySelected">
+							</vg-select>
+						</span>
+						<span *ngIf="pickupSwitchStatus">
+							<vg-auto-complete name="d2dPickupLocation" id="d2dPickupLocation" label="{{'DOOR.PICKUP_LOCATION' | translate}}" 
+								[model]="pickupLocation" (onModelChange)="updateModelChange($event,'pickupLocation')" placeholder="{{'DOOR.ENTER_PICKUP_POSTAL' | translate}}" [countryCode]="selectedPickupCountry" [api]="api" [url]="url" [params]="pickupparams" [query]="query" [listcount]="listcount" [disabled]="isPickupCountrySelected">
+							</vg-auto-complete>
+						</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<vg-input-date-time  [model]="pickupdate" [placeHolder]="showPickupDropoff.bind(this)"> 
+						</vg-input-date-time>
+					</div>
+				</div>
+				
+				<BR>
+				<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+						<span class="formTitle" translate="DOOR.DOOR_DELIVERY"></span>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" align="right" >
+						 <vg-switch [model]="deliverySwitchStatus" (result)="checkDeliveryStatus($event)">
+						</vg-switch>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					    <vg-select name="d2dDeliveryCountry" id="d2dDeliveryCountry" label="{{'DOOR.DELIVERY_COUNTRY' | translate}}" placeholder="{{'DOOR.SELECT_DELIVERY_COUNTRY' | translate}}"
+							[model]="selectedDeliveryCountry"	(onModelChange)="updateModelChange($event,'selectedDeliveryCountry')" [data]="deliveryCountryList" >
+						</vg-select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<span *ngIf="!deliverySwitchStatus">
+							<vg-select name="d2dDeliveryPort" id="d2dDeliveryPort" label="{{'DOOR.DELIVERY_PORT_LABEL' | translate}}" placeholder="{{'DOOR.DELIVERY_PORT' | translate}}" 
+								[model]="d2dDeliveryPort" (onModelChange)="updateModelChange($event,'d2dDeliveryPort')" [data]="deliveryPortList" [disabled]="isDeliveryCountrySelected">
+							</vg-select>
+						</span>
+						<span *ngIf="deliverySwitchStatus">
+							<vg-auto-complete name="d2dDeliveryLocation" id="d2dDeliveryLocation" label="{{'DOOR.DELIVERY_LOCATION' | translate}}" 
+								[model]="deliveryLocation" (onModelChange)="updateModelChange($event,'deliveryLocation')" placeholder="{{'DOOR.ENTER_DELIVERY_POSTAL' | translate}}"  [countryCode]="selectedDeliveryCountry" [api]="api" [url]="url" [params]="deliveryparams" [query]="query" [listcount]="listcount" [disabled]="isDeliveryCountrySelected">
+							</vg-auto-complete>
+						</span>
+					</div>
+				</div>
+				<HR class="borderCCC vgMarginTop0">	
+				<div class="row">	
+						<vg-dimensions  label="{{'DOOR.VOLUME' | translate}}" [model]="dimensionsField">
+						</vg-dimensions>
+				</div>
+				<div class="row">
+				    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+						    <vg-select name="d2dLoadType" id="d2dLoadType"
+								label="{{'DOOR.PACKAGE' | translate}}" placeholder="{{'DOOR.PACKAGE' | translate}}"
+								[model]="d2dLoadType" [data]="loadTypeList" [showlabel]=true>
+							</vg-select>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">&nbsp;</div>
+					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+						<vg-input type="number" min="1" max="15" step="1" name="package" id="package" label="{{'DOOR.NO_OF_PACKAGES' | translate}}" 
+							model="piecefield" [showlabel]=true>
+						</vg-input>
+					</div> 
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vgPaddingTop10">
+						<button class="btn btn-default vg-btn-lg" [disabled]="validate()" (click)="openConfirmDialog()"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"><span translate="DOOR.GET_QUOTE"></span></div></div></button>
+					</div>
+				</div>
+				<BR>
+				<div class="row">
+				 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				  <div uib-dropdown id="quote-search-dropdown" auto-close="outsideClick">
+				    <button class="btn btn-default vg-btn-lg vg-btn-quote-search"  uib-dropdown-toggle id="quote-search-dropdown"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">{{'DOOR.HAVE_A_QUOTE_NUMBER' | translate}}</div></button>
+				       <div class="dropdown-menu dropdown-menu-quote-search" dropdown-prevent-close aria-labelledby="quote-search-dropdown">
+				        <div class="row">&nbsp;</div>
+				        <div class="row">
+				          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				          <input data-ng-attr-type="text" data-ng-attr-name="quoteSearchNumber" data-ng-attr-id="quoteSearchNumber" class="form-control" placeholder="{{'DOOR.ENTER_QUOTE_PLACEHOLDER' | translate}}" 
+							ng-model="quoteSearchNumber" uppercase ng-change="changeModelValue()"/>				         
+				          </div>
+                        </div>
+                        <div class="row text-left">	
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div ng-if="invalidQuote && quoteSearchNumber.length>0">
+									<p class="help-block required-font-color">{{'DOOR.VALID_QUOTE_MSG' | translate}}</p>
+								</div>																
+						  </div>		
+						</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row text-right"> 
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right">
+				          <button class="btn btn-default btn-color" ng-click="searchQuoteNumber();" >{{'DOOR.VIEW_QUOTE_BTN' | translate}}</button>
+				          </div>				          
+				        </div>
+				        <div class="row">&nbsp;</div>
+				      </div>
+				  </div>
+				  </div>					
+				</div>
+				<div class="row">&nbsp;</div>
+				<div class="row">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+</form>

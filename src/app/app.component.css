@@ -1,0 +1,8 @@
+a, a:visited {
+    color: rgb(186, 12, 47) !important;
+    text-decoration: none;
+}
+
+select,input,button {
+    border-radius: 0px !important;
+}

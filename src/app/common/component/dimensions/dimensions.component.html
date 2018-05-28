@@ -1,0 +1,60 @@
+<div class="form-group">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="row">
+	 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+		<label for="{{id}}">
+			{{'DOOR.TOTAL_WEIGHT' | translate}}		
+		</label>
+		<div>
+			<div>
+				<input type="text"   class="form-control" [placeholder]="weightUnit" 
+					ng-model="totalWeight"/>
+					<div class="btn-group btn-group-sm vgBtnGroup vgFlexBtn boxUnit" role="group">
+				<button type="button"  [ngClass]="{'active':weightUnit=='kgs'}" class="btn"  uib-btn-radio="'kgs'" translate="COMMON.KGS" (click)="isDimsChanged('kgs')"></button>
+				<button type="button"  [ngClass]="{'active':weightUnit=='lbs'}"  class="btn" uib-btn-radio="'lbs'" translate="COMMON.LBS" (click)="isDimsChanged('lbs')"></button>
+			</div>
+			</div>			
+    </div>
+	</div>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">&nbsp;</div>
+  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+		<label for="{{id}}" >
+			{{'DOOR.TOTAL_VOLUME' | translate}}		
+		</label>
+		<div>
+			<div>
+        <input type="text"  class="form-control" [placeholder]="volumeUnit" 
+        ng-model="totalVolume" />
+					<div class="btn-group btn-group-sm vgBtnGroup vgFlexBtn boxUnit" role="group">
+            <button type="button" class="btn"  [ngClass]="{'active':volumeUnit=='cbm'}"  uib-btn-radio="'cbm'" translate="COMMON.CBM" (click)="isVolumeChanged('cbm')"></button>
+            <button type="button" class="btn"  [ngClass]="{'active':volumeUnit=='cft'}"  uib-btn-radio="'cft'" translate="COMMON.CFT" (click)="isVolumeChanged('cft')"></button>
+        </div>
+			</div>			
+    </div>
+	</div>
+	<!-- <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" ng-class="{'has-feedback': $ctrl.showValidationIconInField, 'has-error' : $ctrl.form[$ctrl.name1].$invalid && $ctrl.form[$ctrl.name1].$dirty,'has-success' : $ctrl.form[$ctrl.name1].$valid && $ctrl.form[$ctrl.name1].$dirty}">
+		<label for="{{id}}" ng-class="{'sr-only': hideLabelText, 'has-required': required}">
+			{{'DOOR.TOTAL_VOLUME' | translate}}			
+		</label>
+		<div class="inner-addon right-addon">
+			<input type="{{$ctrl.type}}"  class="form-control" placeholder="{{'COMMON.'+$ctrl.model.volumeUnit | uppercase | translate}}" 
+			ng-model="$ctrl.model.totalVolume"  step="{{$ctrl.step}}" awnum="" num-sep="." num-int="3" num-fract="4" num-thousand="false" ng-blur="$ctrl.onblur()"			
+			ng-change="$ctrl.isDimsChanged()"  tooltip-placement="top-right" 
+			 tooltip-is-open="$ctrl.valueChanged.displayDimsTooltip" tooltip-trigger="none"
+			 tooltip-popup-close-delay="2000"/>
+			<a href="#" class="search-icon">
+		        <i class="fa fa-calculator color-red" id="calculator" ng-click="$ctrl.showCalculator()"      
+		        ></i>
+		    </a>
+		    <div class="btn-group btn-group-sm vgBtnGroup vgFlexBtn boxUnit" role="group">
+					<button type="button" class="btn" ng-model="$ctrl.model.volumeUnit" uib-btn-radio="'cbm'" translate="COMMON.CBM" ng-click="$ctrl.isDimsChanged()"></button>
+					<button type="button" class="btn" ng-model="$ctrl.model.volumeUnit" uib-btn-radio="'cft'" translate="COMMON.CFT" ng-click="$ctrl.isDimsChanged()"></button>
+			</div>
+		</div>
+		<div ng-messages="$ctrl.form[$ctrl.name1].$error" ng-if="$ctrl.form[$ctrl.name1].$dirty">
+			<p class="help-block" ng-message="required">{{'DOOR.TOTAL_VOLUME' | translate}} {{'DOOR.VALIDATION_MSG1' | translate}}</p>
+		</div>
+	</div> -->
+  </div>
+  </div>
+</div>

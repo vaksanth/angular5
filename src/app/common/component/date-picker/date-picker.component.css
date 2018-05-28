@@ -1,0 +1,13 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.txt-small-date {
+    font-size: 12px;
+}
+
+.input-group-addon{
+    border-radius:0px !important;
+}
+
+.font20{
+    color:#ba0c2f !important;
+}

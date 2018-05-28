@@ -1,0 +1,51 @@
+.subnav, .subnavZone{
+    height: 44px !important;
+}
+.subnavBottom {
+    background: #eee;
+    min-height: 1.25em;
+    vertical-align: middle;
+    color: #53565a;
+    font-weight: 700;
+    padding: 10px 10px 10px 10px;
+    text-transform: uppercase;
+    line-height: 16px;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+a, a:visited {
+    color: rgb(186, 12, 47) !important;
+    text-decoration: none;
+}
+
+select.head-select {
+    padding:0px;
+}
+
+.infoList {
+    font-size: 22px;
+    font-weight: 600;
+}
+.infoList li {
+	padding: 12px 0px 12px 0px;
+	line-height: 22px;
+	display: table;	/* added, as list text wraps 2nd line, the 2nd line to start under 1st line text starting (i.e. ignore 2nd line starting under custom bullet) */
+}
+li.tick::before {
+    color: #ffffff;
+    content: "\002714";
+    font-size: 24px;
+    padding-right: 10px;
+	display: table-cell;	/* added, as list text wraps 2nd line, the 2nd line to start under 1st line text starting (i.e. ignore 2nd line starting under custom bullet) */
+}
+
+header .loginBtn:hover,header .btn.vgHeaderBtn:hover {
+	color: #fff !important;
+}
+
+select.head-select {
+   padding-left: 5px !important;
+}

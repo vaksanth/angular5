@@ -1,0 +1,105 @@
+<style>
+    .updates div {
+      float: left;
+      text-align: left;
+    }
+    .subscribe-confirm {
+      color: #ba0c2f;
+      display: none;
+      margin-left: 10px;
+    }
+  </style>
+  
+  <!-- <vg-footer-menu></vg-footer-menu> -->
+  
+  <footer class="footer">
+    <div class="footer-nav">
+      <ul>
+        <li>
+          <a href="/"><span translate="Header.HOME"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/about-vanguard"><span translate="Header.ABOUT_US"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/careers"><span translate="Header.CAREERS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/services-overview"><span translate="Header.SERVICES"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/news"><span translate="Header.NEWS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/locations"><span translate="Header.LOCATIONS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/contact-us"><span translate="Header.CONTACT_US"></span></a>
+        </li>
+        <!-- below, for loggedOut -->
+        <span ng-if="userLoggedOut">
+          <li>
+            <a href="/apps/signup/"><span translate="Footer.REQUEST_A_LOGIN"></span></a>
+          </li>
+          <li>
+            <a href="/apps/user/get-password.jsp"><span translate="Header.FORGOT_PASS"></span></a>
+          </li>
+        </span>
+        <!-- below, for loggedIn -->
+        <span ng-if="userLoggedIn">
+          <li>
+            <a href="/apps/view-profile/"><span translate="Header.MY_PROFILE"></span></a>
+          </li>
+          <li>
+            <a href="/apps/dashboard/"><span translate="Header.SIGN_OUT"></span></a>
+          </li>
+        </span>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/terms-and-conditions"><span translate="Header.TERMS_CONS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/fmc-tariff-links"><span translate="Header.FMC_TARIFF_LINKS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/bill-of-lading-TC"><span translate="Footer.BIL_LADING_TERMS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/usa-brokerage-terms"><span translate="FOOTER.USA_BROKERAGE_TERMS_AND_CONDITIONS"></span></a>
+        </li>
+        <li>
+          <a target="_blank" href="http://{{cmshost}}/usa-terms-service"><span translate="FOOTER.USA_TERMS_AND_CONDITIONS"></span></a>
+        </li>
+      </ul>
+      <div class="footer-sub">
+        <div class="footer-social">
+          <div class="social">
+            <div class="link">
+              <a target="_blank" href="https://twitter.com/vlsglobal"><div class="icon twitter"></div></a>
+            </div>
+            <div class="link">
+              <a target="_blank" href="https://www.facebook.com/Vanguard-Logistics-Services-198403123628096/?fref=ts"><div class="icon facebook"></div></a>
+            </div>
+            <div class="link">
+              <a target="_blank" href="https://www.linkedin.com/company/vanguard-logistics-services"><div class="icon linkedin"></div></a>
+            </div>
+          </div>
+        </div>
+        <div class="updates-text"><span translate="Footer.GET_REGULAR_UPDATE"></span></div>
+        <div class="updates">
+          <form novalidate target="_blank" class="validate" name="mc-embedded-subscribe-form" id="mc-embedded-subscribe-form" method="post" action="//vanguardlogistics.us12.list-manage.com/subscribe/post?u=c1e107be12c0e77f49c48c1b7&amp;id=019fc61452">
+            <div class="subscribe-1">
+              <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="{{'FOOTER.ENTER_EMAIL_ADDRESS' | translate}}" />
+            </div>
+            <div class="subscribe-2">
+              <input type="submit" id="mc-embedded-subscribe" value="{{'FOOTER.JOIN' | translate}}" >
+            </div>
+            <div class="subscribe-confirm">Thank You. A confirmation email<br>has been sent to your inbox.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>VANGUARD LOGISTICS SERVICES provides ocean transportation to and from the United States and throughout the world as Vanguard Logistics Services (USA), Inc. dba Vanguard Logistics Services dba Vanguard dba Brennan International Transport dba Brennan dba Conterm Consolidation Services dba Conterm dba Direct Container Line dba DCL dba Ocean World Shipping dba OWS dba Ocean Express dba Oceanexpress (OTI# 017237N); or Vanguard Logistics Services (Hong Kong) Limited dba Vanguard Logistics Services dba Vanguard (OTI# 019927); or Vanguard Logistics Services (Japan) Limited dba Vanguard Logistics Services dba Vanguard (OTI# 021711).</p>
+      <div class="image-container footer-c-tpat"><img height="59" width="156" alt="C-TPAT" src="assets/img/c-tpat-rough.jpg"></div>
+    </div>
+  </footer>

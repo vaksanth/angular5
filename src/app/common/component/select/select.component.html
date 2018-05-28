@@ -1,0 +1,14 @@
+<form>
+  <div class="row form-group">
+      <div class="col-md-12">
+      	<label for="{{id}}" ng-class="{'sr-only': hideLabelText, 'has-required': required}" *ngIf="showlabel==true">
+            {{label | translate}}		
+          </label>
+      <select name="list" class="custom-select" [(ngModel)]="model" (ngModelChange)="dataChanged($event)" [disabled]="disabled" >
+        <option [ngValue]="undefined" disabled selected>{{placeholder | translate}}</option>  
+        <option *ngFor="let list of data;" [ngValue]="list">{{ list.name }}            
+        </option>
+      </select>
+    </div>
+    </div>
+</form>

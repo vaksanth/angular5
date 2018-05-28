@@ -1,0 +1,124 @@
+<header class="header">
+	<div>
+		<!-- Note: TODO below, mobile screen language change, height adjusting|moving language content ignore, thinks moving for width < 546px, (i.e. to have header height same for languages content) -->
+		<nav class="hidden-xs">
+			<div class="row" >
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+					<span class="vg-logo">
+						<a href="http://{{cmshost}}/default" target="_blank" ><img alt="Vanguard Logistics" src="assets/img/vanguardadessologo.png"></a>
+					</span>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-8 text-left">
+					<ul>
+						<li>
+							<a target="_blank" href="http://{{cmshost}}/news"><span translate="Header.NEWS"></span></a>
+						</li>
+						<li>
+							<a href="http://{{cmshost}}/about-vanguard" target="_blank"><span translate="Header.ABOUT_US"></span></a>
+						</li>
+						<li>
+							<a href="http://{{cmshost}}/our-company" target="_blank"><span translate="Header.OUR_COMPANY"></span></a>
+						</li>
+						<li>
+							<a href="http://{{cmshost}}/leadership" target="_blank"><span translate="Header.LEADERSHIP"></span></a>
+						</li>
+						<li>
+							<a href="http://{{cmshost}}/" target="_blank"><span translate="Header.VANGUARD_HOME"></span></a>
+						</li>
+					</ul>
+				</div>
+				
+				<!-- below added, of column wraps, start from first (i.e. below logo to have), thinks -->
+				<div class="clearfix visible-xs-block"></div>
+				
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 socialLoginBtn flexSocialLoginBtn"><!-- class `vgDisplayInlineFlex`, added working, if `float` not given for below elements CSS -->
+					<div class="social">
+						<span class="link">
+							<a target="_blank" href="https://twitter.com/vlsglobal"><div class="icon twitter"></div></a>
+						</span>
+						<span class="link">
+							<a target="_blank" href="https://www.facebook.com/Vanguard-Logistics-Services-198403123628096/?fref=ts"><div class="icon facebook"></div></a>
+						</span>
+						<span class="link">
+							<a target="_blank" href="https://www.linkedin.com/company/vanguard-logistics-services"><div class="icon linkedin"></div></a>
+						</span>
+					</div>
+					<div class="loginBtn">
+						<!-- below, for login -->
+						<a class="btn vgHeaderBtn my-vanguard" href="/apps/dashboard/?login=Y" *ngIf="isUserLoggedIn"><span translate="Header.MY_VANGUARD"></span></a>
+						<!-- below, for logout -->
+						<a class="btn vgHeaderBtn my-vanguard" href="/apps/user/logout.jsp" *ngIf="!isUserLoggedIn"><span translate="Header.SIGN_OUT"></span></a><!-- commented `ng-click="logoutUser()"`, checking logout --><!-- commented href="/apps/user/logout.jsp", checking after logout contents hide, show -->
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-8">
+					<div class="sign-up">
+						<span *ngIf="!isUserLoggedIn">
+							<a href="/apps/signup/"><span translate="Header.SIGN_UP"></span></a> | 
+							<a href="/apps/user/get-password.jsp" class="no-highlight"><span translate="USER.ForgotPass_Userid"></span></a>
+						</span>
+						<span *ngIf="!isUserLoggedIn">
+							<a href="/apps/view-profile/" target="_blank"><span translate="Header.MY_PROFILE"></span></a> | 
+							<a href="/apps/user/change-password.jsp" class="no-highlight" target="_blank"><span translate="ChangePass.CHANGE_PASS"></span></a>
+						</span>
+						<br>
+						<a href="http://helpdesk.vanguardlogistics.com/supportapp/index.jsp" target="_blank" class="no-highlight"><span translate="Header.HAVE_TECH_ISSUE"></span></a><br>
+						<a href="/apps/feedback/" *ngIf="isUserLoggedIn" target="_blank"><span translate="Menu.PROVIDE_FEEDBACK"></span></a>
+					</div>
+				</div>
+			</div>
+		</nav>
+		
+		
+		<div class="subnav hidden-xs">
+			<div class="row subnavZone">
+			    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-left user-login">
+					 <label for="cmbWelcome" *ngIf="!isUserLoggedIn"><span translate="Header.WELCOME"></span> &nbsp;<span> XXXXX</span></label>
+				</div> 
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 languageField">
+				   <span class="col-lg-9 col-md-9 col-sm-9 col-xs-9 text-right">
+					<label class="header-label-center" for="cmbNativeLanguage"><span translate="Header.LANGUAGE"></span>:</label>
+					</span>					
+					<span class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+					<span id="lang_span">
+						  <select #langSelect (change)="changeLang(langSelect.value)" class="head-select trackShipmentText">
+                  <option *ngFor="let lang of langlist" [value]="lang.value" [selected]="lang.value === translate.currentLang">{{ lang.name }}</option>
+              </select>
+					</span>
+					</span>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 regionField">
+				   <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-right">
+					<label class="header-label-center"for="cmbRegion"><span translate="Header.REGION"></span></label>
+					</span>
+					 <span class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+					<select name="cmbRegion" id="cmbRegion" class="head-select trackShipmentText" onchange="changeRegion(this.value);" >
+						<option value="ASIA">{{'GSS.ASIA' | translate}}</option>
+						<option value="EUROPE">{{'GSS.EUROPE' | translate}}</option>
+						<option value="NORTH_AMERICA" selected="selected">{{'GSS.NORTH_AMERICA' | translate}}</option>
+						<option value="OCEANIA">{{'GSS.OCEANIA' | translate}}</option>
+						<option value="SOUTH_AMERICA">{{'GSS.SOUTH_AMERICA' | translate}}</option>
+					</select>
+					</span>
+				</div>
+				<!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+					<span class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-right">
+						<label class="header-label-center" for="cmbRegion"><span translate="Header.TRACK_SHIPMENT"></span></label>
+					</span>
+				    <span class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 
+				   		<input data-ng-attr-type="text" data-ng-attr-name="trackBookingNumber" data-ng-attr-id="trackBookingNumber" class="form-control trackShipmentText" placeholder="{{'Menu.Enter_Booking' | translate}}" 
+							ng-model="model.trackBookingNumber" style="text-transform: uppercase;" ng-keypress="($event.which === 13)? trackShipment():return">
+					</span>
+					<span class="col-lg-2 col-md-2 col-sm-2 col-xs-2">				
+				   		<button class="btn btn-default btn-color btn-color-go" ng-click="trackShipment()" ng-disabled="model.trackBookingNumber == null || model.trackBookingNumber == ''">{{'HEADER.GO_BTN' | translate}}</button>
+					</span>
+				</div>				 -->
+			</div>
+    </div>
+		<div class="subnavBottom" >
+			<a href="/apps/dashboard/"><span translate="Menu.TOOLS"></span></a>
+			<span id="breadcrumb">&nbsp;&rsaquo;&rsaquo;&nbsp;{{breadCrumb | translate}}</span>
+			<!-- <span id="breadcrumb" *ngIf="subBreadCrumb !=''">&nbsp;&rsaquo;&rsaquo;&nbsp;<a href="#/door-to-door">{{breadCrumb | translate}}</a></span> -->
+			<!-- <span id="breadcrumb" *ngIf="subBreadCrumb !=''">&nbsp;&rsaquo;&rsaquo;&nbsp;{{subBreadCrumb | translate}}</span> -->
+    </div>
+	</div>
+</header>

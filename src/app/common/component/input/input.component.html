@@ -1,0 +1,8 @@
+<form>
+  <div class="row form-group">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <label for="Input" *ngIf="showlabel">{{label | translate}}</label>
+    <input [(ngModel)]="model" (ngModelChange)="dataChanged($event)" name="input" type="{{type}}" class="form-control" id="inputField" aria-describedby="inputField" placeholder="{{placeholder | translate}}">
+    </div>
+ </div>
+ </form>

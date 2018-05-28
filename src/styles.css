@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.form-control,button,.modal-content{
+    border-radius:0px !important;
+}
+.btn {
+    font-size: 12px !important;
+    font-weight: bold !important;
+}
+
+.vg-btn-lg[disabled], .vg-btn-lg[disabled]:hover {
+    background-color: #C7C7C7 !important;
+    border: 1px solid #7f7f7f !important;
+    color: #53565A !important;
+    opacity: 1 !important;
+}

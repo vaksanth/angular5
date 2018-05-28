@@ -1,0 +1,22 @@
+<!-- https://www.npmjs.com/package/ngx-typeahead -->
+<form>
+    <div class="row form-group">
+        <div class="col-md-12">
+                <!-- <input class="form-control" [value]="search" ngxTypeahead [taUrl]="url" [taParams]="params"  [taApi]="api" [taItemTpl]="itemTpl" (taSelected)="handleResultSelected($event)">
+                <ng-template #itemTpl let-result class="list-item">
+                        {{ result.result.locality }}
+                      </ng-template> -->                      
+                      <input [(ngModel)]="model" name="autocomplete" class="form-control"
+                        ngxTypeahead
+                        [taUrl]="url"
+                        [taApi]="api"
+                        [taParams]="params"
+                        [taQueryParam]="taQueryParam"
+                        [taItemTpl]="itemTpl"
+                        (taSelected)="handleResultSelected($event)" [placeholder]="placeholder">
+      <ng-template #itemTpl let-result>
+        {{ result.result.locality}},{{result.result.stateProvince}},{{result.result.iso}}[{{result.result.postCode}}]
+      </ng-template>
+        </div>
+    </div>
+</form>

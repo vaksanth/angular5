@@ -1,0 +1,27 @@
+.web-popup {
+	background-color: #e6e7e8;
+	left: 50%;
+	padding: 20px;
+	position: fixed;
+	top: 50px;
+	transform: translate(-50%, 0px);
+	z-index: 999;
+}
+
+.web-overlay {
+	background-color: #000000;
+	height: 100%;
+	left: 0;
+	margin: 0;
+	opacity: 0.6;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 998;
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../lib/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.eot');
+  src: url('../lib/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../lib/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../lib/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../lib/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../lib/bootstrap/3.3.6/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}

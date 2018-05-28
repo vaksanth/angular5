@@ -1,0 +1,14 @@
+<!-- https://stackoverflow.com/questions/39846282/how-to-add-the-text-on-and-off-to-toggle-button -->
+<form>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="input-group date" data-provide="datepicker">
+            <span class="input-group-addon txt-small-date">{{placeHolder() | translate}}</span>
+          <input placeholder="" type="text" class="form-control" bsDatepicker #dp="bsDatepicker" [minDate]="minDate" [maxDate]="maxDate"
+          #dpYMD="bsDatepicker" [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-red',locale :'en' }">            <span class="input-group-addon" >
+              <a  (click)="dp.show()"><i class="fa fa-calendar font20"></i></a>
+            </span>
+        </div>
+    </div>
+  </div>
+</form>
